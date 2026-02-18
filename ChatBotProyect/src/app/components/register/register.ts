@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class Register {
   registerForm: FormGroup;
+  isSubmitting = false;
+  errorMessage = '';
+  successMessage = '';
 
   formFields = [
     {
@@ -58,7 +62,11 @@ export class Register {
     }
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.registerForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
@@ -81,9 +89,41 @@ export class Register {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      console.log('Form submitted:', this.registerForm.value);
-      // Aquí tu lógica de registro
+    if (this.registerForm.invalid) {
+      return;
     }
+
+    this.isSubmitting = true;
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    const { username, email, password } = this.registerForm.value;
+
+    // PETICIÓN AL BACKEND
+    this.http.post('http://localhost:3001/api/register', {
+      username,
+      email,
+      password
+    }).subscribe({
+      next: (response: any) => {
+        console.log('✅ Usuario registrado:', response);
+        this.successMessage = '¡Registro exitoso! Redirigiendo...';
+        this.registerForm.reset();
+        this.isSubmitting = false;
+        
+        // Guardar usuario en localStorage
+        localStorage.setItem('axon_current_user', JSON.stringify(response.user));
+        
+        // Redirigir al chat
+        setTimeout(() => {
+          this.router.navigate(['/chat']);
+        }, 1500);
+      },
+      error: (error) => {
+        console.error('❌ Error en registro:', error);
+        this.isSubmitting = false;
+        this.errorMessage = error.error?.error || 'Error al registrar. Intenta de nuevo.';
+      }
+    });
   }
 }
