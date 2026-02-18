@@ -1,0 +1,91 @@
+<div class="register-wrapper">
+  <div class="register-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Header -->
+      <div class="register-header">
+        <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="15" cy="15" r="3.8" fill="#00f5ff"/>
+          <circle cx="15" cy="15" r="3.8" fill="#00f5ff" opacity="0.2">
+            <animate attributeName="r" from="3.8" to="13" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" from="0.2" to="0" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="6"  cy="10" r="1.8" fill="#00f5ff" opacity="0.6"/>
+          <circle cx="24" cy="10" r="1.8" fill="#bf5fff" opacity="0.6"/>
+          <circle cx="6"  cy="20" r="1.8" fill="#bf5fff" opacity="0.6"/>
+          <circle cx="24" cy="20" r="1.8" fill="#00f5ff" opacity="0.6"/>
+        </svg>
+        <h2>Registro AXON<em>AI</em></h2>
+        <p>Configura tu cuenta de asistente empresarial</p>
+      </div>
+
+      <!-- Form fields -->
+      @for (field of formFields; track field.name) {
+        <div class="form-group">
+          <label [for]="field.name">
+            <span class="label-icon">{{ field.icon }}</span>
+            {{ field.label }}
+          </label>
+          <input 
+            [type]="field.type" 
+            [formControlName]="field.name" 
+            [placeholder]="field.placeholder"
+            [id]="field.name">
+          
+          @if (registerForm.get(field.name)?.touched && registerForm.get(field.name)?.invalid) {
+            <span class="error">
+              @if (registerForm.get(field.name)?.hasError('required')) {
+                {{ field.errorMessages?.required }}
+              }
+              @if (registerForm.get(field.name)?.hasError('minlength')) {
+                {{ field.errorMessages?.minlength }}
+              }
+              @if (registerForm.get(field.name)?.hasError('email')) {
+                {{ field.errorMessages?.email }}
+              }
+            </span>
+          }
+        </div>
+      }
+
+      <!-- Password mismatch error -->
+      @if (registerForm.touched && registerForm.hasError('mismatch')) {
+        <div class="error error--global">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Las contraseñas no coinciden
+        </div>
+      }
+
+      <!-- Terms checkbox -->
+      <div class="form-group form-group--checkbox">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="acceptTerms">
+          <span class="checkbox-custom"></span>
+          <span class="checkbox-text">Acepto los términos y condiciones</span>
+        </label>
+        @if (registerForm.get('acceptTerms')?.touched && registerForm.get('acceptTerms')?.invalid) {
+          <span class="error">Debes aceptar los términos</span>
+        }
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">
+        <span class="btn-glow"></span>
+        <span class="btn-text">Registrarse</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Login link -->
+      <div class="form-footer">
+        <span>¿Ya tienes cuenta?</span>
+        <a routerLink="/login" class="login-link">Iniciar sesión</a>
+      </div>
+
+    </form>
+  </div>
+</div>

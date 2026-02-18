@@ -1,0 +1,92 @@
+<nav class="nav" [ngClass]="{ 'nav--scrolled': isScrolled }">
+
+  <!-- Línea inferior animada -->
+  <span class="nav__line"></span>
+
+  <!-- Logo -->
+  <a routerLink="/" class="nav__logo">
+    <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="15" cy="15" r="3.8" fill="#00f5ff"/>
+      <circle cx="15" cy="15" r="3.8" fill="#00f5ff" opacity="0.2">
+        <animate attributeName="r" from="3.8" to="13" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from="0.2" to="0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <line x1="15" y1="2"  x2="6"  y2="10" stroke="#00f5ff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <line x1="15" y1="2"  x2="24" y2="10" stroke="#00f5ff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <line x1="15" y1="28" x2="6"  y2="20" stroke="#00f5ff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <line x1="15" y1="28" x2="24" y2="20" stroke="#00f5ff" stroke-width="0.7" stroke-opacity="0.35"/>
+      <circle cx="6"  cy="10" r="1.8" fill="#00f5ff" opacity="0.6"/>
+      <circle cx="24" cy="10" r="1.8" fill="#bf5fff" opacity="0.6"/>
+      <circle cx="6"  cy="20" r="1.8" fill="#bf5fff" opacity="0.6"/>
+      <circle cx="24" cy="20" r="1.8" fill="#00f5ff" opacity="0.6"/>
+    </svg>
+    <span class="nav__logo-text">
+      <span class="nav__logo-name">AXON<em>AI</em></span>
+      <span class="nav__logo-sub">v2.4.1 · neural</span>
+    </span>
+  </a>
+
+  <!-- Links desktop -->
+  <ul class="nav__links">
+    <li>
+      <a class="nav__link"
+         data-index="01"
+         routerLink="/"
+         routerLinkActive="nav__link--active"
+         [routerLinkActiveOptions]="{ exact: true }">
+        Home
+      </a>
+    </li>
+    <li>
+      <a class="nav__link"
+         data-index="02"
+         routerLink="/chat"
+         routerLinkActive="nav__link--active">
+        <span class="nav__link-icon">◈</span>
+        Chat
+        <span class="nav__badge">Live</span>
+      </a>
+    </li>
+    <li>
+      <a class="nav__link nav__link--cta"
+         routerLink="/registrarse"
+         routerLinkActive="nav__link--active">
+        Acceder →
+      </a>
+    </li>
+  </ul>
+
+  <!-- Status -->
+  <div class="nav__status">
+    <span class="nav__status-dot"></span>
+    <span>SYS · ONLINE</span>
+  </div>
+
+  <!-- Hamburger -->
+  <button class="nav__burger"
+          [ngClass]="{ 'open': menuOpen }"
+          (click)="toggleMenu()"
+          aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav__drawer" [ngClass]="{ 'open': menuOpen }" (click)="closeMenu()">
+  <a class="nav__link"
+     data-index="01"
+     routerLink="/"
+     routerLinkActive="nav__link--active"
+     [routerLinkActiveOptions]="{ exact: true }">Home</a>
+  <a class="nav__link"
+     data-index="02"
+     routerLink="/chat"
+     routerLinkActive="nav__link--active">
+    <span class="nav__link-icon">◈</span> Chat
+    <span class="nav__badge">Live</span>
+  </a>
+  <a class="nav__link nav__link--cta"
+     routerLink="/registrarse"
+     routerLinkActive="nav__link--active">Acceder →</a>
+</div>

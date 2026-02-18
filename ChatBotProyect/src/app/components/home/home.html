@@ -1,0 +1,192 @@
+<section class="home">
+
+  <!-- Fondo: grid + orbes de luz -->
+  <div class="home__bg">
+    <div class="home__bg-grid"></div>
+    <div class="home__bg-orb home__bg-orb--1"></div>
+    <div class="home__bg-orb home__bg-orb--2"></div>
+    <div class="home__bg-orb home__bg-orb--3"></div>
+    <div class="home__bg-noise"></div>
+  </div>
+
+  <!-- Líneas de scan horizontales -->
+  <div class="home__scanline"></div>
+
+  <!-- Hero content -->
+  <div class="home__hero">
+
+    <!-- Tag superior -->
+    <div class="home__tag">
+      <span class="home__tag-dot"></span>
+      <span class="home__tag-text">Asistente empresarial · IA generativa</span>
+      <span class="home__tag-ver">v2.4.1</span>
+    </div>
+
+    <!-- Título principal -->
+    <h1 class="home__title">
+      <span class="home__title-line home__title-line--1">Tu empresa</span>
+      <span class="home__title-line home__title-line--2">
+        habla con
+        <span class="home__title-accent">
+          AXON<em>AI</em>
+          <svg class="home__title-underline" viewBox="0 0 280 10" preserveAspectRatio="none">
+            <path d="M0,8 Q70,2 140,6 Q210,10 280,4" stroke="#00f5ff" stroke-width="1.5" fill="none" stroke-dasharray="280" stroke-dashoffset="280">
+              <animate attributeName="stroke-dashoffset" from="280" to="0" dur="1s" begin="1s" fill="freeze"/>
+            </path>
+          </svg>
+        </span>
+      </span>
+    </h1>
+
+    <!-- Subtítulo -->
+    <p class="home__subtitle">
+      Un asistente de inteligencia artificial que entiende tu negocio,<br>
+      responde a tus clientes y <span class="home__subtitle-hl">automatiza lo que más tiempo te consume.</span>
+    </p>
+
+    <!-- Métricas rápidas -->
+    <div class="home__metrics">
+      <div class="home__metric">
+        <span class="home__metric-value">98<em>%</em></span>
+        <span class="home__metric-label">Precisión</span>
+      </div>
+      <div class="home__metric-sep"></div>
+      <div class="home__metric">
+        <span class="home__metric-value">0.3<em>s</em></span>
+        <span class="home__metric-label">Respuesta media</span>
+      </div>
+      <div class="home__metric-sep"></div>
+      <div class="home__metric">
+        <span class="home__metric-value">24<em>/7</em></span>
+        <span class="home__metric-label">Disponibilidad</span>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="home__ctas">
+      <a routerLink="/chat" class="home__cta home__cta--primary">
+        <span class="home__cta-glow"></span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="8" cy="10" r="1" fill="currentColor"/>
+          <circle cx="12" cy="10" r="1" fill="currentColor"/>
+          <circle cx="16" cy="10" r="1" fill="currentColor"/>
+        </svg>
+        Hablar con AXON AI
+      </a>
+      <a routerLink="/registrarse" class="home__cta home__cta--secondary">
+        Crear cuenta gratis
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Social proof -->
+    <div class="home__proof">
+      <div class="home__proof-avatars">
+        <span class="home__proof-avatar">A</span>
+        <span class="home__proof-avatar">M</span>
+        <span class="home__proof-avatar">R</span>
+        <span class="home__proof-avatar">K</span>
+      </div>
+      <span class="home__proof-text">
+        <strong>+2.400 empresas</strong> ya automatizan con AXON
+      </span>
+    </div>
+
+  </div>
+
+  <!-- Panel de preview del chat -->
+  <div class="home__preview">
+
+    <!-- Cabecera del panel -->
+    <div class="home__preview-header">
+      <div class="home__preview-dots">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="home__preview-title">AXON AI · Business Assistant</span>
+      <div class="home__preview-status">
+        <span class="home__preview-dot"></span>
+        <span>EN VIVO</span>
+      </div>
+    </div>
+
+    <!-- Mensajes de chat simulados -->
+    <div class="home__preview-body">
+
+      <div class="home__msg home__msg--bot">
+        <div class="home__msg-avatar">
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="4" fill="#00f5ff" opacity="0.9"/>
+            <circle cx="10" cy="10" r="7" stroke="#00f5ff" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="home__msg-bubble">
+          <span class="home__msg-sender">AXON AI</span>
+          Hola, soy tu asistente empresarial. ¿En qué puedo ayudarte hoy?
+        </div>
+      </div>
+
+      <div class="home__msg home__msg--user">
+        <div class="home__msg-bubble">
+          Necesito un resumen de ventas del último trimestre.
+        </div>
+      </div>
+
+      <div class="home__msg home__msg--bot">
+        <div class="home__msg-avatar">
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="4" fill="#00f5ff" opacity="0.9"/>
+            <circle cx="10" cy="10" r="7" stroke="#00f5ff" stroke-width="0.8" stroke-dasharray="3 2" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="home__msg-bubble">
+          <span class="home__msg-sender">AXON AI</span>
+          Analizando datos...
+          <div class="home__msg-chart">
+            <div class="home__chart-bar" style="--h: 60%; --delay: 0.1s"></div>
+            <div class="home__chart-bar" style="--h: 80%; --delay: 0.2s"></div>
+            <div class="home__chart-bar" style="--h: 55%; --delay: 0.3s"></div>
+            <div class="home__chart-bar" style="--h: 95%; --delay: 0.4s"></div>
+            <div class="home__chart-bar" style="--h: 72%; --delay: 0.5s"></div>
+          </div>
+          <span class="home__msg-highlight">↑ 23% respecto al trimestre anterior</span>
+        </div>
+      </div>
+
+      <!-- Typing indicator -->
+      <div class="home__msg home__msg--bot home__msg--typing">
+        <div class="home__msg-avatar">
+          <svg viewBox="0 0 20 20" fill="none">
+            <circle cx="10" cy="10" r="4" fill="#00f5ff" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="home__msg-bubble">
+          <span class="home__typing-dot"></span>
+          <span class="home__typing-dot"></span>
+          <span class="home__typing-dot"></span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Input falso -->
+    <div class="home__preview-input">
+      <span class="home__preview-input-text">Escribe tu consulta empresarial...</span>
+      <button class="home__preview-send">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Esquinas HUD -->
+    <div class="home__preview-corner home__preview-corner--tl"></div>
+    <div class="home__preview-corner home__preview-corner--tr"></div>
+    <div class="home__preview-corner home__preview-corner--bl"></div>
+    <div class="home__preview-corner home__preview-corner--br"></div>
+
+  </div>
+
+</section>
